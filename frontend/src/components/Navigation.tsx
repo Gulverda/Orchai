@@ -14,7 +14,6 @@ export function Navigation({ onNavigate }: NavigationProps) {
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
       <div className="max-w-screen-2xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <button
             onClick={() => onNavigate('hero')}
             className="flex items-center gap-3 group"
@@ -25,7 +24,6 @@ export function Navigation({ onNavigate }: NavigationProps) {
             <span className="text-xl font-bold gradient-text">Orch AI</span>
           </button>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <Button
               variant="ghost"
@@ -35,7 +33,7 @@ export function Navigation({ onNavigate }: NavigationProps) {
               Documentation
             </Button>
             <a
-              href="https://github.com/orchestrator-ai"
+              href="https://github.com/Gulverda/demo-monorepo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
@@ -55,7 +53,6 @@ export function Navigation({ onNavigate }: NavigationProps) {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -66,7 +63,6 @@ export function Navigation({ onNavigate }: NavigationProps) {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-2">

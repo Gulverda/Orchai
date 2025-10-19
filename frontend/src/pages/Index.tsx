@@ -1,32 +1,42 @@
-import { useState, useEffect } from 'react';
-import { Navigation } from '@/components/Navigation';
-import { Sidebar } from '@/components/Sidebar';
-import { HeroSection } from '@/components/HeroSection';
-import { CodeBlock } from '@/components/CodeBlock';
-import { Shield } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Navigation } from "@/components/Navigation";
+import { Sidebar } from "@/components/Sidebar";
+import { HeroSection } from "@/components/HeroSection";
+import { CodeBlock } from "@/components/CodeBlock";
+import { Shield } from "lucide-react";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   // Update active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'getting-started', 'how-it-works', 'api-reference', 'examples', 'security'];
+      const sections = [
+        "hero",
+        "getting-started",
+        "how-it-works",
+        "api-reference",
+        "examples",
+        "security",
+      ];
       const scrollPosition = window.scrollY + 100;
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(sectionId);
             break;
           }
@@ -34,8 +44,8 @@ const Index = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const installCode = `npm install orchestrator-ai`;
@@ -117,18 +127,26 @@ docker-compose up`;
   return (
     <div className="min-h-screen bg-gradient-subtle bg-gradient-animated">
       <Navigation onNavigate={scrollToSection} />
-      
+
       <div className="flex pt-16">
         <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
-        
+
         <main className="flex-1 lg:ml-64">
           <div className="max-w-5xl mx-auto">
             <HeroSection />
 
             {/* Getting Started */}
-            <section id="getting-started" className="px-6 py-20 scroll-mt-16 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-8 gradient-text">Getting Started</h2>
-              
+            <section
+              id="getting-started"
+              className="px-6 scroll-mt-16 animate-fade-in"
+            >
+              <h2
+                style={{ fontSize: "36px" }}
+                className="font-bold mb-8 gradient-text"
+              >
+                Getting Started
+              </h2>
+
               <div className="space-y-8">
                 <div className="glass rounded-lg p-6 border border-border">
                   <h3 className="text-2xl font-semibold mb-4">Requirements</h3>
@@ -137,13 +155,15 @@ docker-compose up`;
                       <span className="text-primary">•</span> Node.js 16+
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span> Docker & Docker Compose
+                      <span className="text-primary">•</span> Docker & Docker
+                      Compose
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="text-primary">•</span> Git
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span> GEMINI_API_KEY environment variable
+                      <span className="text-primary">•</span> GEMINI_API_KEY
+                      environment variable
                     </li>
                   </ul>
                 </div>
@@ -155,65 +175,89 @@ docker-compose up`;
 
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Quick Start</h3>
-                  <CodeBlock code={quickStartCode} language="javascript" id="quickstart" />
+                  <CodeBlock
+                    code={quickStartCode}
+                    language="javascript"
+                    id="quickstart"
+                  />
                 </div>
               </div>
             </section>
 
-            {/* How It Works */}
-            <section id="how-it-works" className="px-6 py-20 scroll-mt-16 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-8 gradient-text">How It Works</h2>
-              
+            <section
+              id="how-it-works"
+              className="px-6 py-20 pb-0 scroll-mt-16 animate-fade-in"
+            >
+              <h2 className="text-4xl font-bold mb-8 gradient-text">
+                How It Works
+              </h2>
+
               <div className="grid gap-6">
                 {[
                   {
                     number: 1,
-                    title: 'Code Intelligence',
-                    description: 'The system scans your monorepo and automatically detects:',
+                    title: "Code Intelligence",
+                    description:
+                      "The system scans your monorepo and automatically detects:",
                     items: [
-                      'Frontend Frameworks: React, Vue, Angular',
-                      'Backend Services: Node.js, Java (Spring Boot), Python (FastAPI), Go',
-                      'Databases: PostgreSQL, MongoDB, MySQL, Redis',
-                      'Message Queues: RabbitMQ, Kafka, Redis',
-                      'Connection Ports and environment variables',
-                      'Dependencies and their versions'
-                    ]
+                      "Frontend Frameworks: React, Vue, Angular",
+                      "Backend Services: Node.js, Java (Spring Boot), Python (FastAPI), Go",
+                      "Databases: PostgreSQL, MongoDB, MySQL, Redis",
+                      "Message Queues: RabbitMQ, Kafka, Redis",
+                      "Connection Ports and environment variables",
+                      "Dependencies and their versions",
+                    ],
                   },
                   {
                     number: 2,
-                    title: 'Architecture Inference',
-                    description: 'AI leverages Google Gemini 1.5 Pro\'s 1M token context window to understand your architecture:',
+                    title: "Architecture Inference",
+                    description:
+                      "AI leverages Google Gemini 1.5 Pro's 1M token context window to understand your architecture:",
                     diagram: `Client (React) → API Gateway (Node.js) → Services (Python)
                    ↓
-         PostgreSQL + Redis Cache`
+         PostgreSQL + Redis Cache`,
                   },
                   {
                     number: 3,
-                    title: 'Auto-Generated Configuration',
-                    description: 'Creates everything you need:',
+                    title: "Auto-Generated Configuration",
+                    description: "Creates everything you need:",
                     items: [
-                      'Optimized Dockerfiles for each service',
-                      'docker-compose.yml with network configuration',
-                      'CI/CD workflows (GitHub Actions / GitLab CI)',
-                      'Environment variable templates',
-                      'Health checks and monitoring'
-                    ]
-                  }
+                      "Optimized Dockerfiles for each service",
+                      "docker-compose.yml with network configuration",
+                      "CI/CD workflows (GitHub Actions / GitLab CI)",
+                      "Environment variable templates",
+                      "Health checks and monitoring",
+                    ],
+                  },
                 ].map((step) => (
-                  <div key={step.number} className="glass rounded-lg p-6 border border-border">
+                  <div
+                    key={step.number}
+                    className="glass rounded-lg p-6 border border-border"
+                  >
                     <div className="flex items-center gap-4 mb-4">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                        step.number === 1 ? 'bg-primary' : step.number === 2 ? 'bg-secondary' : 'bg-accent'
-                      }`}>
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                          step.number === 1
+                            ? "bg-primary"
+                            : step.number === 2
+                            ? "bg-primary"
+                            : "bg-primary"
+                        }`}
+                      >
                         {step.number}
                       </div>
                       <h3 className="text-2xl font-semibold">{step.title}</h3>
                     </div>
-                    <p className="text-muted-foreground mb-4">{step.description}</p>
+                    <p className="text-muted-foreground mb-4">
+                      {step.description}
+                    </p>
                     {step.items && (
                       <ul className="space-y-2">
                         {step.items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                          <li
+                            key={i}
+                            className="flex items-start gap-2 text-muted-foreground"
+                          >
                             <span className="text-primary mt-1">•</span>
                             <span>{item}</span>
                           </li>
@@ -230,23 +274,37 @@ docker-compose up`;
               </div>
             </section>
 
-            {/* API Reference */}
-            <section id="api-reference" className="px-6 py-20 scroll-mt-16 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-8 gradient-text">API Reference</h2>
-              
+            <section
+              id="api-reference"
+              className="px-6 py-20 pb-0 scroll-mt-16 animate-fade-in"
+            >
+              <h2 className="text-4xl font-bold mb-8 gradient-text">
+                API Reference
+              </h2>
+
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">analyze(repoUrl)</h3>
+                  <h3 className="text-2xl font-semibold mb-4">
+                    analyze(repoUrl)
+                  </h3>
                   <p className="text-muted-foreground mb-4">
-                    Analyzes a repository and returns detected services, databases, and architecture.
+                    Analyzes a repository and returns detected services,
+                    databases, and architecture.
                   </p>
-                  <CodeBlock code={analyzeExample} language="javascript" id="analyze" />
+                  <CodeBlock
+                    code={analyzeExample}
+                    language="javascript"
+                    id="analyze"
+                  />
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">generateConfig(analysis)</h3>
+                  <h3 className="text-2xl font-semibold mb-4">
+                    generateConfig(analysis)
+                  </h3>
                   <p className="text-muted-foreground mb-4">
-                    Creates complete configuration based on your codebase analysis.
+                    Creates complete configuration based on your codebase
+                    analysis.
                   </p>
                   <div className="glass rounded-lg p-6 border border-border">
                     <p className="font-medium mb-2">Generates:</p>
@@ -261,18 +319,26 @@ docker-compose up`;
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">setupEnvironment(config)</h3>
+                  <h3 className="text-2xl font-semibold mb-4">
+                    setupEnvironment(config)
+                  </h3>
                   <p className="text-muted-foreground">
-                    Deploys all files and configurations to your project directory.
+                    Deploys all files and configurations to your project
+                    directory.
                   </p>
                 </div>
               </div>
             </section>
 
             {/* Examples */}
-            <section id="examples" className="px-6 py-20 scroll-mt-16 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-8 gradient-text">Examples</h2>
-              
+            <section
+              id="examples"
+              className="px-6 py-20 pb-0 scroll-mt-16 animate-fade-in"
+            >
+              <h2 className="text-4xl font-bold mb-8 gradient-text">
+                Examples
+              </h2>
+
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">CLI Usage</h3>
@@ -280,24 +346,45 @@ docker-compose up`;
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">Environment Variables</h3>
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Environment Variables
+                  </h3>
                   <CodeBlock code={envVars} language="bash" id="env" />
                 </div>
               </div>
             </section>
 
-            {/* Security */}
-            <section id="security" className="px-6 py-20 scroll-mt-16 animate-fade-in">
-              <h2 className="text-4xl font-bold mb-8 gradient-text">Security</h2>
-              
+            <section
+              id="security"
+              className="px-6 py-20 scroll-mt-16 animate-fade-in"
+            >
+              <h2 className="text-4xl font-bold mb-8 gradient-text">
+                Security
+              </h2>
+
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { title: 'Encrypted Storage', description: 'API keys and secrets are encrypted at rest' },
-                  { title: 'Vulnerability Scanning', description: 'Automated dependency security checks' },
-                  { title: 'Minimal Permissions', description: 'Only required access permissions' },
-                  { title: 'OWASP Compliance', description: 'Follows OWASP Top 10 best practices' }
+                  {
+                    title: "Encrypted Storage",
+                    description: "API keys and secrets are encrypted at rest",
+                  },
+                  {
+                    title: "Vulnerability Scanning",
+                    description: "Automated dependency security checks",
+                  },
+                  {
+                    title: "Minimal Permissions",
+                    description: "Only required access permissions",
+                  },
+                  {
+                    title: "OWASP Compliance",
+                    description: "Follows OWASP Top 10 best practices",
+                  },
                 ].map((item) => (
-                  <div key={item.title} className="glass rounded-lg p-6 border border-border">
+                  <div
+                    key={item.title}
+                    className="glass rounded-lg p-6 border border-border hover:-translate-y-1 transition ease-in"
+                  >
                     <Shield className="h-6 w-6 text-success mb-3" />
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                     <p className="text-muted-foreground">{item.description}</p>
@@ -310,16 +397,25 @@ docker-compose up`;
             <footer className="px-6 py-12 border-t border-border">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <p className="text-muted-foreground text-sm">
-                  © 2024 Orch AI. MIT License.
+                  © 2025 Orch AI.
                 </p>
                 <div className="flex gap-6">
-                  <a href="https://github.com/orchestrator-ai" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a
+                    href="https://github.com/Gulverda/demo-monorepo"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     GitHub
                   </a>
-                  <a href="https://docs.orchestrator-ai.dev" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a
+                    href="https://docs.orchestrator-ai.dev"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Documentation
                   </a>
-                  <a href="https://discord.gg/orchestrator-ai" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a
+                    href="https://discord.gg/orchestrator-ai"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Discord
                   </a>
                 </div>

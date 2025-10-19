@@ -40,7 +40,6 @@ export function HeroSection() {
       id="hero"
       className="relative py-20 flex flex-col items-center justify-center px-6 overflow-hidden scroll-mt-16 mb-4"
     >
-      {/* Animated Background Effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-glow [animation-delay:1s]" />
@@ -48,25 +47,21 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-fade-in-up">
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-border glow">
           <Sparkles className="h-4 w-4 text-primary" />
-          <span className="text-sm font-medium gradient-text">AI-Powered Automation</span>
+          <span className="text-sm font-medium gradient-text">AI-Powered Docker Automation</span>
         </div>
 
-        {/* Heading */}
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
           <span className="gradient-text">Orch AI</span>
         </h1>
 
-        {/* Description */}
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           Transform your monorepo into production-ready containers in seconds.
           <br />
           Backend status and database data displayed below in real-time.
         </p>
 
-        {/* Terminal Box */}
         <div className="mt-12 glass rounded-lg overflow-hidden shadow-card border border-border max-w-3xl mx-auto">
           <div className="flex items-center gap-2 px-4 py-3 bg-card border-b border-border">
             <div className="flex gap-1.5">
