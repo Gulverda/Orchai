@@ -70,7 +70,7 @@ export GEMINI_API_KEY="your_gemini_api_key_here"
 # Step 2: Analyze any monorepo
 orchai analyze https://github.com/username/project
 
-# That's it! Orchestrator-AI will:
+# That's it! Orch-AI will:
 # 1. Clone your repository
 # 2. Detect all services (React, Node.js, Python, etc.)
 # 3. Generate Docker configurations with AI
@@ -276,7 +276,7 @@ DOCKER_BUILDKIT=1`;
                   {
                     number: 1,
                     title: 'Repository Analysis',
-                    description: 'Orchestrator-AI scans your codebase to identify services and their configurations',
+                    description: 'Orch-AI scans your codebase to identify services and their configurations',
                     items: [
                       'Detects package.json for Node.js projects',
                       'Identifies requirements.txt for Python services',
@@ -341,7 +341,7 @@ DOCKER_BUILDKIT=1`;
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">orchai analyze</h3>
+                  <h3 className="text-2xl font-semibold mb-4">Orchai analyze</h3>
                   <p className="text-muted-foreground mb-4">
                     Complete end-to-end analysis and deployment pipeline. Analyzes repository, generates configs, builds images, and starts services.
                   </p>
@@ -426,7 +426,7 @@ DOCKER_BUILDKIT=1`;
             <footer className="px-6 py-12 border-t border-border">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <p className="text-muted-foreground text-sm">
-                  © 2025 Orchestrator-AI. Built with Google Gemini AI.
+                  © 2025 Orch-AI. Built with Google Gemini AI.
                 </p>
                 <div className="flex gap-6">
 

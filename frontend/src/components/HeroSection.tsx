@@ -40,12 +40,12 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-border glow">
           <Sparkles className="h-4 w-4 text-primary" />
-          <span className="text-sm font-medium gradient-text">AI-Powered DevOps Automation</span>
+          <span className="text-sm font-medium gradient-text">AI-Powered Docker Automation</span>
         </div>
 
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-          <span className="gradient-text">Orchestrator-AI</span>
+          <span className="gradient-text">Orch-AI</span>
         </h1>
 
         {/* Description */}
