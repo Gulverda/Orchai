@@ -215,8 +215,8 @@ DOCKER_BUILDKIT=1`;
       <div className="flex pt-16">
         <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
         
-        <main className="flex-1 lg:ml-64 w-full md:max-w-lg">
-          <div className="w-[100%] lg:max-w-5xl mx-auto">
+        <main className="flex-1 lg:ml-64 w-full">
+          <div className="w-full mx-auto">
             <HeroSection />
 
             {/* Getting Started */}
@@ -268,7 +268,7 @@ DOCKER_BUILDKIT=1`;
             </section>
 
             {/* How It Works */}
-            <section id="how-it-works" className="px-6 py-20 scroll-mt-16 animate-fade-in w-full md:max-w-3xl">
+            <section id="how-it-works" className="px-6 py-20 scroll-mt-16 animate-fade-in w-full">
               <h2 className="text-4xl font-bold mb-8 gradient-text">How It Works</h2>
               
               <div className="grid gap-6 w-full md:grid-cols-1 lg:max-w-3xl overflow-x-auto">
