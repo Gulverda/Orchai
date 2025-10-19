@@ -212,3 +212,42 @@
     }
   }
 }
+
+
+section {
+  margin-bottom: 10px !important;
+  padding-bottom: 0px !important;
+}
+
+.warning-block {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.warning-header {
+    background-color: #ffa700; 
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.warning-content {
+    color: #ffa700;
+    padding: 20px;
+    white-space: pre-wrap;
+}
+
+.warning-content h1 {
+    color: #ff8c00;
+    font-size: 1.1em;
+    margin-top: 0;
+}
+
+.Documentation:hover{
+  background-color: #212444  !important;
+}

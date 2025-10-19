@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Copy, Check, Terminal } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Copy, Check, Terminal } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface CodeBlockProps {
   code: string;
@@ -8,11 +8,7 @@ interface CodeBlockProps {
   id: string;
 }
 
-export function CodeBlock({
-  code,
-  language = "javascript",
-  id,
-}: CodeBlockProps) {
+export function CodeBlock({ code, language = 'javascript', id }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -21,54 +17,25 @@ export function CodeBlock({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const isBash = language === "bash" || language === "shell";
+  const isBash = language === 'bash' || language === 'shell';
 
+  // Simple syntax highlighting for JavaScript
   const highlightJS = (line: string) => {
-    const keywords = [
-      "import",
-      "from",
-      "const",
-      "let",
-      "var",
-      "function",
-      "async",
-      "await",
-      "return",
-      "new",
-      "class",
-      "export",
-      "default",
-    ];
+    const keywords = ['import', 'from', 'const', 'let', 'var', 'function', 'async', 'await', 'return', 'new', 'class', 'export', 'default'];
     const parts = line.split(/(\s+|[{}()[\];,.])/);
-
+    
     return parts.map((part, i) => {
       if (keywords.includes(part)) {
-        return (
-          <span key={i} className="text-[hsl(var(--code-keyword))]">
-            {part}
-          </span>
-        );
+        return <span key={i} className="text-[hsl(var(--code-keyword))]">{part}</span>;
       }
       if (part.match(/^['"`].*['"`]$/)) {
-        return (
-          <span key={i} className="text-[hsl(var(--code-string))]">
-            {part}
-          </span>
-        );
+        return <span key={i} className="text-[hsl(var(--code-string))]">{part}</span>;
       }
       if (part.match(/^\d+$/)) {
-        return (
-          <span key={i} className="text-[hsl(var(--code-number))]">
-            {part}
-          </span>
-        );
+        return <span key={i} className="text-[hsl(var(--code-number))]">{part}</span>;
       }
       if (part.match(/^[A-Z][a-zA-Z]*$/)) {
-        return (
-          <span key={i} className="text-[hsl(var(--code-function))]">
-            {part}
-          </span>
-        );
+        return <span key={i} className="text-[hsl(var(--code-function))]">{part}</span>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -76,6 +43,7 @@ export function CodeBlock({
 
   return (
     <div className="relative group rounded-lg overflow-hidden shadow-card">
+      {/* Header */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-card">
         <div className="flex items-center gap-2">
           <Terminal className="h-4 w-4 text-primary" />
@@ -97,34 +65,28 @@ export function CodeBlock({
         </Button>
       </div>
 
+      {/* Code Content */}
       <div className="bg-[hsl(var(--code-bg))]">
         <pre className="p-4 overflow-x-auto scrollbar-thin">
-          <code
+          <code 
             className="text-sm font-mono leading-relaxed block"
-            style={{ color: "hsl(var(--code-text))" }}
+            style={{ color: 'hsl(var(--code-text))' }}
           >
-            {code.split("\n").map((line, i) => (
+            {code.split('\n').map((line, i) => (
               <div key={i} className="min-h-[1.5rem]">
-                {isBash && line.trim().startsWith("#") ? (
-                  <span className="text-[hsl(var(--code-comment))] italic">
-                    {line}
-                  </span>
+                {isBash && line.trim().startsWith('#') ? (
+                  <span className="text-[hsl(var(--code-comment))] italic">{line}</span>
                 ) : isBash && line.trim().match(/^[\$>]/) ? (
                   <>
                     <span className="text-primary font-bold mr-2">$</span>
-                    <span className="text-[hsl(var(--code-text))]">
-                      {line.substring(line.indexOf("$") + 1).trim()}
-                    </span>
+                    <span className="text-[hsl(var(--code-text))]">{line.substring(line.indexOf('$') + 1).trim()}</span>
                   </>
-                ) : line.trim().startsWith("//") ||
-                  line.trim().startsWith("/*") ? (
-                  <span className="text-[hsl(var(--code-comment))] italic">
-                    {line}
-                  </span>
-                ) : language === "javascript" ? (
+                ) : line.trim().startsWith('//') || line.trim().startsWith('/*') ? (
+                  <span className="text-[hsl(var(--code-comment))] italic">{line}</span>
+                ) : language === 'javascript' ? (
                   <>{highlightJS(line)}</>
                 ) : (
-                  <span>{line || "\u00A0"}</span>
+                  <span>{line || '\u00A0'}</span>
                 )}
               </div>
             ))}

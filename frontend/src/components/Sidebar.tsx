@@ -6,16 +6,14 @@ interface SidebarProps {
   onNavigate: (sectionId: string) => void;
 }
 
-const sections = [
-  { id: 'hero', label: 'Overview', icon: Sparkles },
-  { id: 'getting-started', label: 'Getting Started', icon: Zap },
-  { id: 'how-it-works', label: 'How It Works', icon: Box },
-  { id: 'api-reference', label: 'API Reference', icon: Code },
-  { id: 'examples', label: 'Examples', icon: Terminal },
-  { id: 'security', label: 'Security', icon: Shield },
-];
-
 export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
+  const sections = [
+    { id: 'hero', label: 'Overview', icon: Sparkles },
+    { id: 'getting-started', label: 'Getting Started', icon: Zap },
+    { id: 'how-it-works', label: 'How It Works', icon: Box },
+    { id: 'api-reference', label: 'API Reference', icon: Code },
+    { id: 'examples', label: 'Examples', icon: Terminal },
+  ];
   return (
     <aside className="hidden lg:block fixed left-0 top-16 bottom-0 w-64 glass border-r border-border overflow-y-auto">
       <div className="p-6 space-y-1">
