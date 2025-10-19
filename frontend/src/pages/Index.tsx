@@ -215,8 +215,8 @@ DOCKER_BUILDKIT=1`;
       <div className="flex pt-16">
         <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
         
-        <main className="flex-1 lg:ml-64">
-          <div className="max-w-5xl mx-auto">
+        <main className="flex-1 lg:ml-64 w-full md:max-w-lg">
+          <div className="w-[100%] lg:max-w-5xl mx-auto">
             <HeroSection />
 
             {/* Getting Started */}
@@ -268,10 +268,10 @@ DOCKER_BUILDKIT=1`;
             </section>
 
             {/* How It Works */}
-            <section id="how-it-works" className="px-6 py-20 scroll-mt-16 animate-fade-in">
+            <section id="how-it-works" className="px-6 py-20 scroll-mt-16 animate-fade-in w-full md:max-w-3xl">
               <h2 className="text-4xl font-bold mb-8 gradient-text">How It Works</h2>
               
-              <div className="grid gap-6">
+              <div className="grid gap-6 w-full md:grid-cols-1 lg:max-w-3xl overflow-x-auto">
                 {[
                   {
                     number: 1,
@@ -305,7 +305,7 @@ DOCKER_BUILDKIT=1`;
                     ]
                   }
                 ].map((step) => (
-                  <div key={step.number} className="glass rounded-lg p-6">
+                  <div key={step.number} className="glass rounded-lg p-6 w-full lg:max-w-3xl">
                     <div className="flex items-center gap-4 mb-4">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                         step.number === 1 ? 'bg-primary' : step.number === 2 ? 'bg-primary' : 'bg-primary'
